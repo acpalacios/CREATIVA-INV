@@ -1,5 +1,9 @@
 {
     "private": true,
+    "engines": {
+        "node": "12.x",
+        "npm": "6.x"
+    },
     "scripts": {
         "dev": "npm run development",
         "development": "mix",
@@ -7,7 +11,7 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "postinstall": "npm run prod",
+        "heroku-postbuild": "npm run production",
         "production": "mix --production"
     },
     "dependencies": {
@@ -29,9 +33,5 @@
         "vue-loader": "^15.9.6",
         "vue-meta": "^2.3.1",
         "vue-template-compiler": "^2.6.12"
-    },
-    "engines": {
-        "node": "12.22.0",
-        "npm": "6.14.11"
     }
 }
