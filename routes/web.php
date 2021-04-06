@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\OrganizationsController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -127,6 +128,16 @@ Route::delete('contacts/{contact}', [ContactsController::class, 'destroy'])
 
 Route::put('contacts/{contact}/restore', [ContactsController::class, 'restore'])
     ->name('contacts.restore')
+    ->middleware('auth');
+
+// Products
+
+Route::get('products', [ProductsController::class, 'index'])
+    ->name('products')
+    ->middleware('remember', 'auth');
+
+Route::get('products/create', [ProductsController::class, 'create'])
+    ->name('products.create')
     ->middleware('auth');
 
 // Reports
