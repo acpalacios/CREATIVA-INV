@@ -42,7 +42,7 @@ class ProductsController extends Controller
 
     public function store()
     {
-        Product::create(
+        Auth::user()->account->products()->create(
             Request::validate([
                 'name' => ['required', 'max:25'],
                 'contact_id' => ['nullable'],

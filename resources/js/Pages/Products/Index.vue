@@ -18,12 +18,17 @@
     <div class="bg-white rounded-md shadow overflow-x-auto">
       <table class="w-full whitespace-nowrap">
         <tr class="text-left font-bold">
-          <th class="px-6 pt-6 pb-4">Name</th>
+          <th class="px-6 pt-6 pb-4">Nombre</th>
           <th class="px-6 pt-6 pb-4">Proveedor</th>
           <th class="px-6 pt-6 pb-4">Costo Unitario</th>
           <th class="px-6 pt-6 pb-4" colspan="2">Costo Total</th>
         </tr>
         <tr v-for="product in products.data" :key="product.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
+          <td class="border-t">
+            <inertia-link class="px-6 py-4 flex items-center" :href="route('products.edit', product.id)" tabindex="-1">
+              {{ product.name }}
+            </inertia-link>
+          </td>
           <td class="border-t">
             <inertia-link class="px-6 py-4 flex items-center" :href="route('products.edit', product.id)" tabindex="-1">
               <div v-if="product.contact">

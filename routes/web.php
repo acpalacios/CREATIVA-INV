@@ -140,6 +140,10 @@ Route::get('products/create', [ProductsController::class, 'create'])
     ->name('products.create')
     ->middleware('auth');
 
+Route::post('products', [ProductsController::class, 'store'])
+    ->name('products.store')
+    ->middleware('auth');
+
 Route::get('products/edit', [ProductsController::class, 'edit'])
     ->name('products.edit')
     ->middleware('auth');
