@@ -25,12 +25,6 @@
         </tr>
         <tr v-for="product in products.data" :key="product.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
           <td class="border-t">
-            <inertia-link class="px-6 py-4 flex items-center focus:text-indigo-500" :href="route('products.edit', product.id)">
-              {{ product.name }}
-              <icon v-if="product.deleted_at" name="trash" class="flex-shrink-0 w-3 h-3 fill-gray-400 ml-2" />
-            </inertia-link>
-          </td>
-          <td class="border-t">
             <inertia-link class="px-6 py-4 flex items-center" :href="route('products.edit', product.id)" tabindex="-1">
               <div v-if="product.contact">
                 {{ product.contact.name }}

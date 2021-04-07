@@ -2,11 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
-
 class Product extends Model
 {
-    use SoftDeletes;
 
     public function contact()
     {
@@ -29,12 +26,6 @@ class Product extends Model
                         ->orWhere('last_name', 'like', '%'.$search.'%');
                     });
             });
-        })->when($filters['trashed'] ?? null, function ($query, $trashed) {
-            if ($trashed === 'with') {
-                $query->withTrashed();
-            } elseif ($trashed === 'only') {
-                $query->onlyTrashed();
-            }
         });
     }
 }

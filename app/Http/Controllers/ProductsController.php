@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contact;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
-use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 
 class ProductsController extends Controller
@@ -15,10 +14,10 @@ class ProductsController extends Controller
     public function index()
     {
         return Inertia::render('Products/Index', [
-            'filters' => Request::all('search', 'trashed'),
-            'products' => Auth::user()->account->organizations()
+            'filters' => Request::all('search'),
+            'products' => Auth::user()->account->products()
                 ->orderBy('name')
-                ->filter(Request::only('search', 'trashed'))
+                ->filter(Request::only('search'))
                 ->paginate()
                 ->withQueryString()
                 ->through(function ($product) {
@@ -43,7 +42,7 @@ class ProductsController extends Controller
 
     public function store()
     {
-        Auth::user()->account->products()->create(
+        Product::create(
             Request::validate([
                 'name' => ['required', 'max:25'],
                 'contact_id' => ['nullable'],
@@ -56,5 +55,25 @@ class ProductsController extends Controller
         );
 
         return Redirect::route('products')->with('success', 'Product created.');
+    }
+
+    public function edit(Product $product)
+    {
+        return Inertia::render('Products/Edit', [
+            'product' => [
+                'id' => $product->id,
+                'name' => $product->name,
+                'description' => $product->description,
+                'contact_id' => $product->contact_id,
+                'unit_cost' => $product->unit_cost,
+                'total_cost' => $product->total_cost,
+                'notes' => $product->notes,
+            ],
+            'contacts' => Auth::user()->account->contacts()
+                ->orderBy('name')
+                ->get()
+                ->map
+                ->only('id', 'name'),
+        ]);
     }
 }
