@@ -1,18 +1,18 @@
 <template>
   <div>
     <h1 class="mb-8 font-bold text-3xl">
-      <inertia-link class="text-indigo-400 hover:text-indigo-600" :href="route('organizations')">Organizations</inertia-link>
-      <span class="text-indigo-400 font-medium">/</span> Create
+      <inertia-link class="text-indigo-400 hover:text-indigo-600" :href="route('products')">Productos</inertia-link>
+      <span class="text-indigo-400 font-medium">/</span> Crear
     </h1>
     <div class="bg-white rounded-md shadow overflow-hidden max-w-3xl">
       <form @submit.prevent="store">
         <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
           <text-input v-model="form.name" :error="form.errors.name" class="pr-6 pb-8 w-full lg:w-1/2" label="Nombre" />
           <text-input v-model="form.quantity" :error="form.errors.quantity" class="pr-6 pb-8 w-full lg:w-1/2" label="Cantidad" />
-          <text-input v-model="form.description" :error="form.errors.description" class="pr-6 pb-8 w-full lg:w-1/2" label="Descripción" />
           <text-input v-model="form.unit_cost" :error="form.errors.unit_cost" class="pr-6 pb-8 w-full lg:w-1/2" label="Costo Unitario" />
           <text-input v-model="form.total_cost" :error="form.errors.total_cost" class="pr-6 pb-8 w-full lg:w-1/2" label="Costo Total" />
-          <text-input v-model="form.notes" :error="form.errors.notes" class="pr-6 pb-8 w-full lg:w-1/2" label="Notas" />
+          <textarea-input v-model="form.description" :error="form.errors.description" class="pr-6 pb-8 w-full lg:w-1/2" label="Descripción" />
+          <textarea-input v-model="form.notes" :error="form.errors.notes" class="pr-6 pb-8 w-full lg:w-1/2" label="Notas" />
           <select-input v-model="form.contact_id" :error="form.errors.contact_id" class="pr-6 pb-8 w-full lg:w-1/2" label="Proveedor">
             <option :value="null" />
             <option v-for="contact in contacts" :key="contact.id" :value="contact.id">{{ contact.name }}</option>
@@ -31,10 +31,12 @@ import Layout from '@/Shared/Layout'
 import TextInput from '@/Shared/TextInput'
 import SelectInput from '@/Shared/SelectInput'
 import LoadingButton from '@/Shared/LoadingButton'
+import TextareaInput from '../../Shared/TextareaInput'
 
 export default {
   metaInfo: { title: 'Crear Producto' },
   components: {
+    TextareaInput,
     LoadingButton,
     SelectInput,
     TextInput,
