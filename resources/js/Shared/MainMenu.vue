@@ -7,21 +7,21 @@
       </inertia-link>
     </div>
     <div class="mb-4">
-      <inertia-link class="flex items-center group py-3" :href="route('organizations')">
-        <icon name="book" class="w-4 h-4 mr-2" :class="isUrl('organizations') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
-        <div :class="isUrl('organizations') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Productos</div>
+      <inertia-link class="flex items-center group py-3" :href="route('products')">
+        <icon name="book" class="w-4 h-4 mr-2" :class="isUrl('products') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
+        <div :class="isUrl('products') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Productos</div>
       </inertia-link>
     </div>
+    <!--    <div class="mb-4">-->
+    <!--      <inertia-link class="flex items-center group py-3" :href="route('organizations')">-->
+    <!--        <icon name="book" class="w-4 h-4 mr-2" :class="isUrl('organizations') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />-->
+    <!--        <div :class="isUrl('organizations') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Productos</div>-->
+    <!--      </inertia-link>-->
+    <!--    </div>-->
     <div class="mb-4">
       <inertia-link class="flex items-center group py-3" :href="route('contacts')">
         <icon name="users" class="w-4 h-4 mr-2" :class="isUrl('contacts') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
         <div :class="isUrl('contacts') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Contactos</div>
-      </inertia-link>
-    </div>
-    <div class="mb-4">
-      <inertia-link class="flex items-center group py-3" :href="route('products')">
-        <icon name="book" class="w-4 h-4 mr-2" :class="isUrl('products') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
-        <div :class="isUrl('products') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Productos</div>
       </inertia-link>
     </div>
     <div class="mb-4">

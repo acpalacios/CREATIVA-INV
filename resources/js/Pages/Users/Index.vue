@@ -1,32 +1,19 @@
 <template>
   <div>
-    <h1 class="mb-8 font-bold text-3xl">Users</h1>
+    <h1 class="mb-8 font-bold text-3xl">Usuarios</h1>
     <div class="mb-6 flex justify-between items-center">
-      <search-filter v-model="form.search" class="w-full max-w-md mr-4" @reset="reset">
-        <label class="block text-gray-700">Role:</label>
-        <select v-model="form.role" class="mt-1 w-full form-select">
-          <option :value="null" />
-          <option value="user">User</option>
-          <option value="owner">Owner</option>
-        </select>
-        <label class="mt-4 block text-gray-700">Trashed:</label>
-        <select v-model="form.trashed" class="mt-1 w-full form-select">
-          <option :value="null" />
-          <option value="with">With Trashed</option>
-          <option value="only">Only Trashed</option>
-        </select>
-      </search-filter>
+      <search-filter v-model="form.search" class="w-full max-w-md mr-4" @reset="reset" />
       <inertia-link class="btn-indigo" :href="route('users.create')">
-        <span>Create</span>
-        <span class="hidden md:inline">User</span>
+        <span>Crear</span>
+        <span class="hidden md:inline">Usuario</span>
       </inertia-link>
     </div>
     <div class="bg-white rounded-md shadow overflow-x-auto">
       <table class="w-full whitespace-nowrap">
         <tr class="text-left font-bold">
-          <th class="px-6 pt-6 pb-4">Name</th>
-          <th class="px-6 pt-6 pb-4">Email</th>
-          <th class="px-6 pt-6 pb-4" colspan="2">Role</th>
+          <th class="px-6 pt-6 pb-4">Nombre</th>
+          <th class="px-6 pt-6 pb-4">Correo</th>
+          <th class="px-6 pt-6 pb-4" colspan="2">Rol</th>
         </tr>
         <tr v-for="user in users" :key="user.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
           <td class="border-t">
