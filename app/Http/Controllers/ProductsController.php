@@ -28,6 +28,10 @@ class ProductsController extends Controller
                         'description' => $product->description,
                         'unit_cost' => $product->unit_cost,
                         'total_cost' => $product->total_cost,
+                        'material' => $product->material,
+                        'unity' => $product->unity,
+                        'color' => $product->color,
+                        'classification' => $product->classification,
                         'notes' => $product->notes,
                         'contact' => $product->contact ? $product->contact->only('name') : null,
                     ];
@@ -63,17 +67,30 @@ class ProductsController extends Controller
             'product' => [
                 'id' => $product->id,
                 'name' => $product->name,
+                'quantity' => $product->quantity,
                 'description' => $product->description,
                 'contact_id' => $product->contact_id,
                 'unit_cost' => $product->unit_cost,
                 'total_cost' => $product->total_cost,
+                'material' => $product->material,
+                'unity' => $product->unity,
+                'color' => $product->color,
+                'classification' => $product->classification,
                 'notes' => $product->notes,
             ],
             'contacts' => Auth::user()->account->contacts()
-                ->orderBy('name')
+                ->orderBy('first_name')
                 ->get()
                 ->map
-                ->only('id', 'name'),
+                ->only('id', 'first_name', 'last_name'),
         ]);
     }
+
+    public function destroy(Product $product)
+    {
+        $product->delete();
+
+        return Redirect::back()->with('success', 'Producto dado de baja.');
+    }
+
 }

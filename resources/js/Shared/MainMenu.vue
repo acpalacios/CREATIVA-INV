@@ -9,7 +9,7 @@
     <div class="mb-4">
       <inertia-link class="flex items-center group py-3" :href="route('products')">
         <icon name="book" class="w-4 h-4 mr-2" :class="isUrl('products') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
-        <div :class="isUrl('products') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Productos</div>
+        <div :class="isUrl('products') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Inventario</div>
       </inertia-link>
     </div>
     <!--    <div class="mb-4">-->
@@ -21,7 +21,7 @@
     <div class="mb-4">
       <inertia-link class="flex items-center group py-3" :href="route('contacts')">
         <icon name="users" class="w-4 h-4 mr-2" :class="isUrl('contacts') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
-        <div :class="isUrl('contacts') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Contactos</div>
+        <div :class="isUrl('contacts') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Proveedores</div>
       </inertia-link>
     </div>
     <div class="mb-4">

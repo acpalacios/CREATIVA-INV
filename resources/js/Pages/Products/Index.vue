@@ -4,8 +4,8 @@
     <div class="mb-6 flex justify-between items-center">
       <search-filter v-model="form.search" class="w-full max-w-md mr-4" @reset="reset" />
       <inertia-link class="btn-indigo" :href="route('products.create')">
-        <span>Create</span>
-        <span class="hidden md:inline">Product</span>
+        <span>Crear</span>
+        <span class="hidden md:inline">Producto</span>
       </inertia-link>
     </div>
     <div class="bg-white rounded-md shadow overflow-x-auto">
@@ -14,7 +14,7 @@
           <th class="px-6 pt-6 pb-4">Nombre</th>
           <th class="px-6 pt-6 pb-4">Proveedor</th>
           <th class="px-6 pt-6 pb-4">Costo Unitario</th>
-          <th class="px-6 pt-6 pb-4" colspan="2">Costo Total</th>
+          <th class="px-6 pt-6 pb-4" colspan="2">Clasificación</th>
         </tr>
         <tr v-for="product in products.data" :key="product.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
           <td class="border-t">
@@ -36,7 +36,7 @@
           </td>
           <td class="border-t">
             <inertia-link class="px-6 py-4 flex items-center" :href="route('products.edit', product.id)" tabindex="-1">
-              {{ product.total_cost }}
+              {{ product.classification }}
             </inertia-link>
           </td>
           <td class="border-t w-px">
@@ -64,7 +64,7 @@ import Pagination from '@/Shared/Pagination'
 import SearchFilter from '@/Shared/SearchFilter'
 
 export default {
-  metaInfo: { title: 'Productos' },
+  metaInfo: { title: 'Inventario' },
   components: {
     Icon,
     Pagination,

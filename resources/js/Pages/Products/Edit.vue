@@ -2,7 +2,7 @@
   <div>
     <h1 class="mb-8 font-bold text-3xl">
       <inertia-link class="text-indigo-400 hover:text-indigo-600" :href="route('products')">Productos</inertia-link>
-      <span class="text-indigo-400 font-medium">/</span> Crear
+      <span class="text-indigo-400 font-medium">/</span> Editar
     </h1>
     <div class="bg-white rounded-md shadow overflow-hidden max-w-3xl">
       <form @submit.prevent="store">
@@ -19,11 +19,12 @@
           <textarea-input v-model="form.notes" :error="form.errors.notes" class="pr-6 pb-8 w-full lg:w-1/2" label="Notas" />
           <select-input v-model="form.contact_id" :error="form.errors.contact_id" class="pr-6 pb-8 w-full lg:w-1/2" label="Proveedor">
             <option :value="null" />
-            <option v-for="contact in contacts" :key="contact.id" :value="contact.id">{{ contact.name }}</option>
+            <option v-for="contact in contacts" :key="contact.id" :value="contact.id">{{ contact.first_name }}</option>
           </select-input>
         </div>
         <div class="px-8 py-4 bg-gray-50 border-t border-gray-100 flex justify-end items-center">
-          <loading-button :loading="form.processing" class="btn-indigo" type="submit">Crear Producto</loading-button>
+          <button v-if="!product.deleted_at" class="text-red-600 hover:underline" tabindex="-1" type="button" @click="destroy">Eliminar Producto</button>
+          <loading-button :loading="form.processing" class="btn-indigo ml-auto" type="submit">Actualizar Producto</loading-button>
         </div>
       </form>
     </div>
@@ -38,7 +39,7 @@ import LoadingButton from '@/Shared/LoadingButton'
 import TextareaInput from '../../Shared/TextareaInput'
 
 export default {
-  metaInfo: { title: 'Crear Producto' },
+  metaInfo: { title: 'Editar Producto' },
   components: {
     TextareaInput,
     LoadingButton,
@@ -49,27 +50,33 @@ export default {
   remember: 'form',
   props: {
     contacts: Array,
+    product: Array,
   },
   data() {
     return {
       form: this.$inertia.form({
-        name: null,
-        quantity: null,
-        description: null,
-        contact_id: null,
-        unit_cost: null,
-        total_cost: null,
-        material: null,
-        unity: null,
-        color: null,
-        classification: null,
-        notes: null,
+        name: this.product.name,
+        quantity: this.product.quantity,
+        description: this.product.description,
+        contact_id: this.product.contact_id,
+        unit_cost: this.product.unit_cost,
+        total_cost: this.product.total_cost,
+        material: this.product.material,
+        unity: this.product.unity,
+        color: this.product.color,
+        classification: this.product.classification,
+        notes: this.product.notes,
       }),
     }
   },
   methods: {
-    store() {
-      this.form.post(this.route('products.store'))
+    update() {
+      this.form.put(this.route('products.update', this.product.id))
+    },
+    destroy() {
+      if (confirm('Seguro que quieres dar de baja a este producto?')) {
+        this.$inertia.delete(this.route('products.destroy', this.product.id))
+      }
     },
   },
 }

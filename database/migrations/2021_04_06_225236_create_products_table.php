@@ -22,6 +22,10 @@ class CreateProductsTable extends Migration
             $table->string('description', 50)->nullable();
             $table->float('unit_cost');
             $table->float('total_cost');
+            $table->string('material', 25)->nullable();
+            $table->string('unity', 25)->nullable();
+            $table->string('color', 25)->nullable();
+            $table->string('classification', 50)->nullable();
             $table->string('notes', 50)->nullable();
             $table->timestamps();
         });

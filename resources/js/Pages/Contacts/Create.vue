@@ -40,7 +40,7 @@ import SelectInput from '@/Shared/SelectInput'
 import LoadingButton from '@/Shared/LoadingButton'
 
 export default {
-  metaInfo: { title: 'Create Contact' },
+  metaInfo: { title: 'Crear Proveedor' },
   components: {
     LoadingButton,
     SelectInput,

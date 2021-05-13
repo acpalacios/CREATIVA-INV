@@ -10,17 +10,17 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        $account = Account::create(['name' => 'CREATIVA']);
+//        $account = Account::create(['name' => 'CREATIVA']);
 
-        factory(User::class)->create([
-            'account_id' => $account->id,
-            'first_name' => 'Katherine',
-            'last_name' => 'Quintanilla',
-            'email' => 'creativa19@gmail.com',
-            'owner' => true,
-        ]);
-
-//        factory(User::class, 5)->create(['account_id' => $account->id]);
+//        factory(User::class)->create([
+//            'account_id' => 1,
+//            'first_name' => 'Katherine',
+//            'last_name' => 'Quintanilla',
+//            'email' => 'abigail@gmail.com',
+//            'owner' => true,
+//        ]);
+//
+//        factory(User::class, 5)->create(['account_id' => 1]);
 //
 //        $organizations = factory(Organization::class, 100)
 //            ->create(['account_id' => $account->id]);
