@@ -10,7 +10,7 @@ class DatabaseSeeder extends Seeder
 {
   public function run()
   {
-    //        $account = Account::create(['name' => 'CREATIVA']);
+    $account = Account::create(['name' => 'CREATIVA']);
 
     factory(User::class)->create([
       'account_id' => 1,
@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
       'email' => 'abigail@gmail.com',
       'owner' => true,
     ]);
+
     //
     //        factory(User::class, 5)->create(['account_id' => 1]);
     //
