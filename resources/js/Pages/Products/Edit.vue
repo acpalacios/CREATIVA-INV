@@ -5,12 +5,12 @@
       <span class="text-indigo-400 font-medium">/</span> Editar
     </h1>
     <div class="bg-white rounded-md shadow overflow-hidden max-w-3xl">
-      <form @submit.prevent="store">
+      <form @submit.prevent="update">
         <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
           <text-input v-model="form.name" :error="form.errors.name" class="pr-6 pb-8 w-full lg:w-1/2" label="Nombre" />
-          <text-input v-model="form.quantity" :error="form.errors.quantity" class="pr-6 pb-8 w-full lg:w-1/2" label="Cantidad" />
-          <text-input v-model="form.unit_cost" :error="form.errors.unit_cost" class="pr-6 pb-8 w-full lg:w-1/2" label="Costo Unitario" />
-          <text-input v-model="form.total_cost" :error="form.errors.total_cost" class="pr-6 pb-8 w-full lg:w-1/2" label="Costo Total" />
+          <text-input v-model="form.quantity" :error="form.errors.quantity" class="pr-6 pb-8 w-full lg:w-1/2" label="Cantidad" type="number" @input="updateTotal()" />
+          <text-input v-model="form.unit_cost" :error="form.errors.unit_cost" class="pr-6 pb-8 w-full lg:w-1/2" label="Costo Unitario" type="number" @input="updateTotal()" />
+          <text-input v-model="form.total_cost" :error="form.errors.total_cost" class="pr-6 pb-8 w-full lg:w-1/2" label="Costo Total" :disabled="true" />
           <textarea-input v-model="form.description" :error="form.errors.description" class="pr-6 pb-8 w-full lg:w-1/2" label="Descripción" />
           <text-input v-model="form.material" :error="form.errors.material" class="pr-6 pb-8 w-full lg:w-1/2" label="Material" />
           <text-input v-model="form.unity" :error="form.errors.unity" class="pr-6 pb-8 w-full lg:w-1/2" label="Unidad de Medida" />
@@ -50,7 +50,7 @@ export default {
   remember: 'form',
   props: {
     contacts: Array,
-    product: Array,
+    product: [Array, Object],
   },
   data() {
     return {
@@ -70,6 +70,11 @@ export default {
     }
   },
   methods: {
+    updateTotal() {
+      if (this.form.unit_cost && this.form.quantity) {
+        this.form.total_cost = parseInt(this.form.quantity) * parseInt(this.form.unit_cost);
+      }
+    },
     update() {
       this.form.put(this.route('products.update', this.product.id))
     },

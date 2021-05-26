@@ -60,7 +60,7 @@ class UsersController extends Controller
         'photo_path' => Request::file('photo') ? Request::file('photo')->store('users') : null,
       ]);
 
-    return Redirect::route('users')->with('success', 'User created.');
+    return Redirect::route('users')->with('success', 'Usuario creado.');
   }
 
   public function edit(User $user)
@@ -103,7 +103,7 @@ class UsersController extends Controller
       $user->update(['password' => Request::get('password')]);
     }
 
-    return Redirect::back()->with('success', 'User updated.');
+    return Redirect::back()->with('success', 'Usuario actualizado.');
   }
 
   public function destroy(User $user)
@@ -114,7 +114,7 @@ class UsersController extends Controller
 
     $user->delete();
 
-    return Redirect::back()->with('success', 'User deleted.');
+    return Redirect::back()->with('success', 'Usuario eliminado.');
   }
 
   public function restore(User $user)

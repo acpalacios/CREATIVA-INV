@@ -30,7 +30,7 @@
           </td>
           <td class="border-t">
             <inertia-link class="px-6 py-4 flex items-center" :href="route('users.edit', user.id)" tabindex="-1">
-              {{ user.owner ? 'Owner' : 'User' }}
+              {{ user.owner ? 'Admin' : 'Regular' }}
             </inertia-link>
           </td>
           <td class="border-t w-px">

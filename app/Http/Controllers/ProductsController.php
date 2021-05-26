@@ -59,13 +59,14 @@ class ProductsController extends Controller
           'contact_id' => ['nullable'],
           'quantity' => ['required'],
           'description' => ['nullable', 'max:50'],
+          'classification' => ['nullable', 'max:50'],
           'unit_cost' => ['required'],
           'total_cost' => ['required'],
           'notes' => ['nullable', 'max:150'],
         ])
       );
 
-    return Redirect::route('products')->with('success', 'Product created.');
+    return Redirect::route('products')->with('success', 'Producto agregado.');
   }
 
   public function edit(Product $product)
@@ -93,10 +94,28 @@ class ProductsController extends Controller
     ]);
   }
 
+  public function update(Product $product)
+  {
+    $product->update(
+      Request::validate([
+        'name' => ['required', 'max:25'],
+        'contact_id' => ['nullable'],
+        'quantity' => ['required'],
+        'description' => ['nullable', 'max:50'],
+        'classification' => ['nullable', 'max:50'],
+        'unit_cost' => ['required'],
+        'total_cost' => ['required'],
+        'notes' => ['nullable', 'max:150'],
+      ])
+    );
+
+    return Redirect::route('products')->with('success', 'Producto actualizado.');
+  }
+
   public function destroy(Product $product)
   {
     $product->delete();
 
-    return Redirect::back()->with('success', 'Producto dado de baja.');
+    return Redirect::route('products')->with('success', 'Producto eliminado.');
   }
 }
