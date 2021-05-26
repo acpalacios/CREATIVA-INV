@@ -25,19 +25,17 @@
           </td>
           <td class="border-t">
             <inertia-link class="px-6 py-4 flex items-center" :href="route('contacts.edit', contact.id)" tabindex="-1">
-              <div v-if="contact.organization">
-                {{ contact.organization.name }}
-              </div>
-            </inertia-link>
-          </td>
-          <td class="border-t">
-            <inertia-link class="px-6 py-4 flex items-center" :href="route('contacts.edit', contact.id)" tabindex="-1">
-              {{ contact.city }}
+              {{ contact.email }}
             </inertia-link>
           </td>
           <td class="border-t">
             <inertia-link class="px-6 py-4 flex items-center" :href="route('contacts.edit', contact.id)" tabindex="-1">
               {{ contact.phone }}
+            </inertia-link>
+          </td>
+          <td class="border-t">
+            <inertia-link class="px-6 py-4 flex items-center" :href="route('contacts.edit', contact.id)" tabindex="-1">
+              {{ contact.address }}
             </inertia-link>
           </td>
           <td class="border-t w-px">
@@ -47,7 +45,7 @@
           </td>
         </tr>
         <tr v-if="contacts.data.length === 0">
-          <td class="border-t px-6 py-4" colspan="4">No contacts found.</td>
+          <td class="border-t px-6 py-4" colspan="4">No existen contactos.</td>
         </tr>
       </table>
     </div>

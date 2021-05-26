@@ -19,7 +19,7 @@
           <textarea-input v-model="form.notes" :error="form.errors.notes" class="pr-6 pb-8 w-full lg:w-1/2" label="Notas" />
           <select-input v-model="form.contact_id" :error="form.errors.contact_id" class="pr-6 pb-8 w-full lg:w-1/2" label="Proveedor">
             <option :value="null" />
-            <option v-for="contact in contacts" :key="contact.id" :value="contact.id">{{ contact.first_name }}</option>
+            <option v-for="contact in contacts" :key="contact.id" :value="contact.id">{{ contact.name }}</option>
           </select-input>
         </div>
         <div class="px-8 py-4 bg-gray-50 border-t border-gray-100 flex justify-end items-center">

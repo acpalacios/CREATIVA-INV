@@ -46,7 +46,7 @@
           </td>
         </tr>
         <tr v-if="products.data.length === 0">
-          <td class="border-t px-6 py-4" colspan="4">No products found.</td>
+          <td class="border-t px-6 py-4" colspan="4">No existen productos.</td>
         </tr>
       </table>
     </div>
